@@ -32,19 +32,22 @@ from runner.koan import *
 #
 # Your goal is to write the score method.
 
-def die_score(dice, val, multiplier1, multiplier2):
-    count = len([x for x in dice if x == val])
-    triplets = int(count/3)
-    score = multiplier1 * triplets * val + multiplier2 * (count - 3 * triplets)
-    return score
-
 def score(dice):
-    total  = die_score(dice,1,1000,100)
-    total += die_score(dice,2,100,0)
-    total += die_score(dice,3,100,0)
-    total += die_score(dice,4,100,0)
-    total += die_score(dice,5,100,50)
-    total += die_score(dice,6,100,0)
+    counts = {}
+    triplets = {}
+    total = 0
+    for die in set(dice):
+        counts[die] = len([x for x in dice if x == die])
+        triplets[die] = int(counts[die]/3)
+        if die == 1:
+            m1 = 1000
+            m2 = 100
+        else:
+            m1 = 100
+            m2 = 0
+        if die == 5:
+            m2 = 50
+        total += m1 * die * triplets[die] + m2 * (counts[die] - 3 * triplets[die])
     return total
 
 class AboutScoringProject(Koan):
