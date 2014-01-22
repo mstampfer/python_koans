@@ -29,5 +29,5 @@ class AboutDecoratingWithFunctions(Koan):
         return name
 
     def test_decorators_can_change_a_function_output(self):
-        self.assertEqual(__, self.render_tag('llama'))
+        self.assertEqual('<llama/>', self.render_tag('llama'))
 

@@ -28,7 +28,7 @@ def triangle(a,b,c):
         raise TriangleError('Triangle ', a, b, c, ' is no good!')
 
     if (a == b == c):
-    return 'equilateral'
+        return 'equilateral'
     elif ((a == b) or (a == c) or (b == c)):
         return 'isosceles'
     else:
